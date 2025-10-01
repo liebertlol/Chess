@@ -17,7 +17,10 @@ local ReplicatedStorage = SE.ReplicatedStorage
 local RunService = SE.RunService
 local HttpService = SE.HttpService
 local fetch = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-local FEN = getFEN()
+
+local fenParser = loadfile("ChessCheat/Library/getFen.lua")()
+local utils = loadfile("ChessCheat/Library/Utils.lua")()
+local FEN = fenParser.getFEN()
 
 function GetMove(FEN, Engine)
     if Engine == "Stockfish" then
@@ -43,5 +46,5 @@ end
 
 while task.wait() do
   local Moves = GetMove(FEN, "Stockfish")
-  Move(Moves)
+  utils.Move(Moves)
 end

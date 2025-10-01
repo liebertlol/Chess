@@ -21,9 +21,9 @@ local fetch = (syn and syn.request) or (http and http.request) or http_request o
 local parser = loadfile("ChessCheat/Library/parser.lua")()
 local depth = 12 -- max 18
 
-function move(move)
-    if move and #move >= 4 then
-        RS.Chess.SubmitMove:InvokeServer(move)
+function move(moveStr)
+    if moveStr and #moveStr >= 4 then
+        RS.Chess.SubmitMove:InvokeServer(moveStr)
     end
 end
 
@@ -35,12 +35,12 @@ function getMove(fen)
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = HttpService:JSONEncode({
-            fen = fen,
-            depth = depth or 12
+                fen = fen,
+                depth = depth or 12
             })
         })
     end)
-    if suc and Res and Res.Success then
+    if suc and Res and Res.Body then
         local Data = HttpService:JSONDecode(Res.Body)
         return Data.from .. Data.to
     end
@@ -50,6 +50,6 @@ while task.wait() do
     local fen = parser.FEN()
     if fen then
         local moved = getMove(fen)
-        move(moves)
+        move(moved)
     end
 end

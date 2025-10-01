@@ -1,5 +1,5 @@
 -- creds by autumnv3
-local base = "https://raw.githubusercontent.com/liebertlol/Chess/main/"
+local base = "https://raw.githubusercontent.com/liebertlol/Chess/refs/heads/main/"
 
 local function getDownload(file)
     file = file:gsub('ChessCheat/', '')

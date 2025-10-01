@@ -11,6 +11,10 @@ local SE = setmetatable({}, {
     end
 })
 
+if not isfolder("ChessCheat") then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/liebertlol/Chess/refs/heads/main/Installer.lua",true))()
+end
+
 local Players = SE.Players
 local Workspace = SE.Workspace
 local ReplicatedStorage = SE.ReplicatedStorage

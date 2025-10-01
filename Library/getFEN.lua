@@ -1,11 +1,11 @@
-function getFEN()
+function parseFen()
 	for _, v in ipairs(workspace:GetChildren()) do
 		if v.Name == "ChessTableset" then
-			if v.WhitePlayer.Value == lplr or v.BlackPlayer.Value == lplr then
+			if v.WhitePlayer.Value == lplr.Name or v.BlackPlayer.Value == lplr.Name then
 				return v.FEN.Value
-      else
-        print("[LIBS] getFEN doesnt work!")
-      end
-    end
-  end
+			end
+		end
+	end
+	print("[DEBUG] not in a matches")
+	return nil
 end

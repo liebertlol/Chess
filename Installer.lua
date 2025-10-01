@@ -45,7 +45,7 @@ for _, v in ipairs({'ChessCheat', 'ChessCheat/Library'}) do
     end
 end
 
-debugDownloadSuccess('Library/getFen.lua')
+debugDownloadSuccess('Library/getFEN.lua')
 debugDownloadSuccess('Library/Utils.lua')
 
 return loadstring(debugDownloadSuccess('Main.lua'))()

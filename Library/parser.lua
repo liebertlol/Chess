@@ -1,3 +1,5 @@
+local lplr = game.Players.LocalPlayer
+
 local parser = {}
 function parser.FEN()
 	for _, v in ipairs(workspace:GetChildren()) do
@@ -7,7 +9,8 @@ function parser.FEN()
 			end
 		end
 	end
-	print("[DEBUG] not in a matches")
+	print("[DEBUG] not in a match")
 	return nil
 end
+
 return parser

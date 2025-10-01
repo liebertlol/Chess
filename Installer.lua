@@ -1,5 +1,5 @@
 -- creds by autumnv3
-local base = "https://github.com/liebertlol/Chess/refs/heads/main/"
+local base = "https://raw.githubusercontent.com/liebertlol/Chess/main/"
 
 local function getDownload(file)
     file = file:gsub('ChessCheat/', '')
@@ -8,7 +8,11 @@ local function getDownload(file)
         return game:HttpGet(base .. file)
     end)
 
-    return suc and ret or 'print("Failed to get ' .. file..'")'
+    if suc and ret then
+        return ret
+    else
+        return '-- Failed to get ' .. file
+    end
 end
 
 local function downloadFile(file)
@@ -29,13 +33,13 @@ local function debugDownloadSuccess(file)
     if isfile('ChessCheat/' .. file) then
         print('[ChessCheat]: Successfully downloaded', file)
     else
-        print('[ChsssCheat]: Failed to download', file)
+        print('[ChessCheat]: Failed to download', file)
     end
 
     return File
 end
 
-for i,v in {'ChessCheat', 'ChessCheat/Library'} do
+for _, v in ipairs({'ChessCheat', 'ChessCheat/Library'}) do
     if not isfolder(v) then
         makefolder(v)
     end

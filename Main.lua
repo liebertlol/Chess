@@ -18,7 +18,7 @@ local Workspace = SE.Workspace
 local RS = SE.ReplicatedStorage
 local HttpService = SE.HttpService
 local fetch = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-local parser = loadfile("ChessCheat/Library/getFEN")()
+local parser = loadfile("ChessCheat/Library/parser.lua")()
 local depth = 12 -- max 18
 
 function move(move)
